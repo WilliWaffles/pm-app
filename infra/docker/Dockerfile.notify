@@ -1,0 +1,11 @@
+FROM node:20-alpine
+WORKDIR /app
+
+COPY services/notify/package*.json ./
+RUN npm install
+
+COPY services/notify ./
+
+EXPOSE 3002
+ENV PORT=3002
+CMD ["npm", "run", "start"]
